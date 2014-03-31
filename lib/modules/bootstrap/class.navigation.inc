@@ -73,7 +73,5 @@ class Bootstrap_Navigation {
     <?php
   }
 
-  function __toString() {
-    return $this->menu_output(); 
-  }
+
 }
