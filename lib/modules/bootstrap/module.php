@@ -13,8 +13,8 @@ if( !is_admin() ) :
 
   //require navwalker code to make bootstrap menu work with wordpress
 
-  require_once dirname( __FILE__ ) . '/wp_bootstrap_navwalker.php';
-  require_once dirname( __FILE__ ) . '/navigation.php';
+  require_once dirname( __FILE__ ) . '/class.bootstrap_navwalker.inc';
+  require_once dirname( __FILE__ ) . '/class.navigation.inc';
 
 
   //enqueue bootstap css and js files to load with the template
