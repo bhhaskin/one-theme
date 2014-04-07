@@ -7,6 +7,7 @@
  * @author Matthew Hansen
  */
 
+require_once get_template_directory() . '/lib/modules/redux/module.php';
 require_once get_template_directory() . '/lib/modules/core/module.php';
 
 if ( !function_exists( 'ot_include_modules' ) ) :
