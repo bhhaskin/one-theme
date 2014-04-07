@@ -9,8 +9,12 @@
  */
 
 require_once dirname( __FILE__ ) . '/lib/modules/loadModules.php';
+require_once dirname( __FILE__ ) . '/lib/core.php';
 
 if( !is_admin() ) :
+
+  $onecore = new OneCore;
+  $onecore->loadModules();
 
 	//Load main.js / this is the parent themes custom js file.
 

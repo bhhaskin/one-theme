@@ -34,6 +34,7 @@ if ( !function_exists( 'ot_include_modules_fallback' ) ) :
  */
 function ot_include_modules_fallback() {
   // Include all modules from the theme (NOT the child themes)
+  echo "Other fallback";
   foreach( glob( get_template_directory() . '/lib/modules/*/module.php' ) as $module ) {
     require_once $module;
   }
