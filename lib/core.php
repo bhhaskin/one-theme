@@ -7,14 +7,25 @@
  * @author Bryan Haskin
  */
 
- class OneCore
+abstract class OneModule {
+  public $onecore;
+  public function __construct($onecore) {
+    $this->onecore = $onecore;
+  }
+  public function __destruct() {
+  }
+}
+
+ abstract class OneCore
  {
 
   public $moduleList= array();
-  protected $moduleClassList = array();
+  public $moduleClassList = array();
 
    public function __construct() {
-   }
+       $this->loadModules();
+      $this->Test->hello();
+  }
 
   protected function get_php_classes($php_code) {
     $classes = array();
@@ -46,11 +57,17 @@
       else :
         $this->moduleSearchFallback();
       endif;
-
     foreach ($this->moduleList as $module){
-      echo $this->file_get_php_classes($module);
+      require_once $module;
+      $temp = $this->file_get_php_classes($module);
+      if (sizeof($temp) > 0){
+        array_push($this->moduleClassList, $temp[0]);
+      }
     }
-    var_dump($this->moduleClassList);
+    foreach ($this->moduleClassList as $module) {
+
+      $this->$module = new $module($this);
+    }
   }
 
   protected function moduleSearch() {
@@ -58,7 +75,6 @@
     $modules_path = new RecursiveDirectoryIterator( get_template_directory() . '/lib/modules/' );
     $recIterator  = new RecursiveIteratorIterator( $modules_path );
     $regex        = new RegexIterator( $recIterator, '/\/module.php$/i' );
-    print_r($this->moduleList);
     foreach( $regex as $item ) {
       array_push($this->moduleList, $item->getPathname());
     }
@@ -75,3 +91,7 @@
    public function __destruct() {
    }
  }
+
+class TheOne extends OneCore{
+  
+}

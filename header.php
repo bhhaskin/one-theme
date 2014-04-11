@@ -42,7 +42,6 @@
 <header>
 
 </header>
-
 <?php $ot_navigation = new Bootstrap_Navigation();
   $ot_navigation->menu_output();
  ?>
