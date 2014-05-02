@@ -10,8 +10,10 @@
 require_once get_template_directory() . '/lib/core.php';
 
 class Test extends OneModule{
-  public $version = "1.0";
-  public function hello(){
-    echo "Hello world!";
-  }
+
+	// required class properties
+	public $version = "1.0";
+	public $level = "system";
+	public $priority = "1";
+
 }
