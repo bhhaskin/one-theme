@@ -13,7 +13,7 @@ require_once dirname( __FILE__ ) . '/lib/core.php';
 
 if( !is_admin() ) :
 
-  //$theOne = new TheOne;
+  $theOne = new TheOne;
 
 	//Load main.js / this is the parent themes custom js file.
 
