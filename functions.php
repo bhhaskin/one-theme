@@ -9,8 +9,15 @@
  */
 
 require_once dirname( __FILE__ ) . '/lib/modules/loadModules.php';
+require_once get_template_directory() . '/lib/core.php';
+
+global $theOne;
+$theOne = new TheOne;
+
+
 
 if( !is_admin() ) :
+  $theOne->assets();
 
 	//Load main.js / this is the parent themes custom js file.
 
