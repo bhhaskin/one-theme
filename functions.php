@@ -13,7 +13,7 @@ require_once get_template_directory() . '/lib/core.php';
 
 global $theOne;
 $theOne = new TheOne;
-
+$theOne->loadModules();
 
 
 if( !is_admin() ) :

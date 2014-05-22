@@ -23,7 +23,6 @@ abstract class OneCore {
  public function __construct() {
  }
  public function assets(){
-   $this->loadModules();
    $this->getAssets();
    $this->enqueueAssets();
  }
