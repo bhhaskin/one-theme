@@ -24,7 +24,11 @@ abstract class OneModule {
    if(!isset($this->priority)){
      throw new LogicException(get_class($this) . ' must have a $priority');
    }
+   $this->init();
   }
+public function init() {
+
+}
 
 public function getModuleDirectory() {
   $reflection = new ReflectionClass($this);
