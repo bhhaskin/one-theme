@@ -233,7 +233,7 @@ class ScriptEnqueueWrapper {
    add_action('wp_enqueue_scripts', array(self::instance(), 'enqueue'));
  }
 
- public static function register($hndl, $src, $deps=array(), $ver=null, $footer=false){
+ public static function register($hndl, $src, $deps=array(), $ver=null, $footer=true){
    self::instance()->scripts[$hndl] = array(
        'src'       => $src,
        'deps'      => $deps,

@@ -50,7 +50,6 @@ public function getModuleDirectory() {
  protected function assetManifest() {
    $json = json_decode(file_get_contents($this->getModuleDirectory() . "manifest.json"), true);
    $temp = array();
-
    foreach($json as $key => $value) {
      foreach($value as $item) {
        if ($this->oneCore->isParent()) {
