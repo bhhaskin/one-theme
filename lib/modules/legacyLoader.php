@@ -6,9 +6,6 @@
  * @since 1.0
  * @author Matthew Hansen
  */
-if (file_exists(get_template_directory() . '/lib/modules/redux/module.php')){
-  require_once get_template_directory() . '/lib/modules/redux/module.php';
-}
 
 require_once get_template_directory() . '/lib/modules/core/module.php';
 
