@@ -9,13 +9,11 @@
  */
 
 require_once dirname( __FILE__ ) . '/lib/modules/legacyLoader.php'; // Legacy Loader
-require_once get_template_directory() . '/lib/module.php';
+
 require_once get_template_directory() . '/lib/masterControl.class.php';
 
 function otParentFunctions() {
-	$masterControl = MasterControl::getInstance();
-	//var_dump($masterControl->getRegister());
-	$masterControl->Test->hello();
+
 
 	if( !is_admin() ) :
 
