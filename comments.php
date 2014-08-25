@@ -5,7 +5,7 @@
   * @subpackage one-theme
   * @since 1.0
   * @author Matthew Hansen
-  */s
+  */
 
 // Do not delete these lines
 if (!empty($_SERVER['SCRIPT_FILENAME']) && 'comments.php' == basename($_SERVER['SCRIPT_FILENAME']))
