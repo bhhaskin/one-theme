@@ -7,6 +7,7 @@
  * @author Bryan Haskin
  * @version 1.3
  */
+namespace oneTheme;
 
 require_once('utils.php');
 
@@ -14,20 +15,15 @@ class MasterControl extends Singleton
 {
 
     use registerObj;
-
-    public function isParent() {
-       if($this->getDirectory() . '/lib' == (get_template_directory() . "/lib") ): // Check to see if parent or child theme
-         return true;
-       else:
-         return false;
-       endif;
-     }
-
-     public function getDirectory() {
-       $reflection = new ReflectionClass($this);
-       $directory = dirname($reflection->getFileName()) . '/';
-
-       return $directory;
-     }
+    
+    public function getRegister() {
+        $array = Array();
+        foreach($this as $key => $value) {
+            if (is_object($value) && is_subclass_of($value, 'oneTheme\Module')){
+                array_push($array, $key);
+            }
+        }
+        return $array;
+    }
 
 }

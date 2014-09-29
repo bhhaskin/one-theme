@@ -5,9 +5,10 @@
  * @subpackage one-theme
  * @since 1.2
  * @author Bryan Haskin
- * @version 1.0
+ * @version 1.1
  */
 
+namespace oneTheme;
 
 class Singleton
 {
@@ -67,8 +68,8 @@ class StyleEnqueueWrapper {
    return self::$ins;
  }
 
- public static function init(){
-   add_action('wp_enqueue_scripts', array(self::instance(), 'enqueue'));
+ public static function init($loc = 'wp_enqueue_scripts'){
+   add_action($loc, array(self::instance(), 'enqueue'));
  }
 
  public static function register($hndl, $src, $deps=array(), $ver=null, $media='all'){
@@ -104,8 +105,8 @@ class ScriptEnqueueWrapper {
    return self::$ins;
  }
 
- public static function init(){
-   add_action('wp_enqueue_scripts', array(self::instance(), 'enqueue'));
+ public static function init($loc = 'wp_enqueue_scripts'){
+   add_action($loc, array(self::instance(), 'enqueue'));
  }
 
  public static function register($hndl, $src, $deps=array(), $ver=null, $footer=true){
@@ -172,21 +173,9 @@ trait registerObj {
 
 trait assetManager {
     public $assets = array();
-    public function getDirectory() {
-      $reflection = new ReflectionClass($this);
-      $directory = dirname($reflection->getFileName()) . '/';
 
-      return $directory;
-    }
 
-    public function getUrl() {
-        $masterControl = MasterControl::getInstance();
-        if ($masterControl->isParent()) {
-            return get_template_directory_uri() . '/lib/modules/' . strtolower(parse_classname(get_class($this))['classname']) . '/';
-        } else {
-            return get_stylesheet_directory_uri() . '/lib/modules/' . strtolower(parse_classname(get_class($this))['classname']) . '/';
-          }
-    }
+
 
     public function getAssets($manifestLoad=True) {
 
@@ -199,7 +188,7 @@ trait assetManager {
                 $this->assets['css']=array();
                 foreach($scanned_directory as $key => $value) {
                     if (pathinfo($value, PATHINFO_EXTENSION) == "css")
-                        array_push($this->assets['css'], $value);
+                        array_push($this->assets['css'], array('file' => $value));
                 }
 
             }
@@ -209,14 +198,14 @@ trait assetManager {
                 $this->assets['js']=array();
                 foreach($scanned_directory as $key => $value) {
                     if (pathinfo($value, PATHINFO_EXTENSION) == "js")
-                        array_push($this->assets['js'], $value);
+                        array_push($this->assets['js'], array('file' => $value));
                 }
             }
         }
     }
 
     public function loadAssets($manifestLoad=True) {
-        $this->getAssets($manifestLoad=True);
+        $this->getAssets($manifestLoad);
         foreach($this->assets as $key => $values) {
             if ($key == 'css') {
                 foreach($values as $key => $value) {
@@ -233,4 +222,6 @@ trait assetManager {
             }
         }
     }
+
+
 }

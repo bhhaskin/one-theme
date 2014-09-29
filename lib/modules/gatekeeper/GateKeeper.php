@@ -41,7 +41,7 @@ class GateKeeperCaptcha {
     return false;
   }
 
-  protected function mathChallenge($operators = array('+', '*', '-'), $min=0, $max=10) {
+  protected function mathChallenge($operators = array('+'), $min=0, $max=10) {
     $operator = array_rand($operators);
     $operands = array(rand($min,$max), rand($min,$max));
     if (($operands[0] < $operands[1]) && ('-' == $operator)){

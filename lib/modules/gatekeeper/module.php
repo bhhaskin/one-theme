@@ -1,19 +1,16 @@
 <?php
+namespace oneTheme;
 
-require_once get_template_directory() . '/lib/module.php';
+require_once get_template_directory() . '/lib/module.class.php';
 require_once 'GateKeeper.php';
 
-class GateKeeper extends OneModule{
-  public $version = "1.0";
-  public $level = "normal";
-  public $priority = "1";
-
+class GateKeeper extends Module{
 
   public function init() {
     include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
     if (is_plugin_active('contact-form-7/wp-contact-form-7.php')){
       include_once( ABSPATH . 'wp-content/plugins/contact-form-7/includes/shortcodes.php' );
-      include_once( ABSPATH . 'wp-content/plugins/contact-form-7/includes/classes.php' );
+      include_once( ABSPATH . 'wp-content/plugins/contact-form-7/modules/captcha.php' );
 
       add_action( 'wpcf7_init', array( $this, 'wpcf7_add_shortcode_captcha' ));
 
@@ -38,7 +35,7 @@ class GateKeeper extends OneModule{
   }
 
   public function wpcf7_captcha_shortcode_handler($tag) {
-    $tag = new WPCF7_Shortcode( $tag );
+    $tag = new \WPCF7_Shortcode( $tag );
 
     if ( empty( $tag->name ) )
 		return '';
@@ -53,7 +50,7 @@ class GateKeeper extends OneModule{
       $atts['class'] = $tag->get_class_option( $class );
 	    $atts['id'] = $tag->get_id_option();
       $atts['alt'] = 'captcha';
-      $atts['src'] = $this->getModuleUrl() . '/00000.png';
+      $atts['src'] = $this->getUrl() . '/00000.png';
       $atts = wpcf7_format_atts( $atts );
       $html = sprintf(
 			'<input type="hidden" name="_wpcf7_captcha_challenge_%1$s" value="%2$s" /><img %3$s />',
@@ -98,7 +95,7 @@ class GateKeeper extends OneModule{
   }
 
   public function wpcf7_captcha_validation_filter( $result, $tag ) {
-    $tag = new WPCF7_Shortcode( $tag );
+    $tag = new \WPCF7_Shortcode( $tag );
 
 	  $type = $tag->type;
 	  $name = $tag->name;
@@ -232,3 +229,5 @@ class GateKeeper extends OneModule{
 
 
 }
+
+new GateKeeper();

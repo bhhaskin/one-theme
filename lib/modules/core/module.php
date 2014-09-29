@@ -16,6 +16,8 @@ define( 'TEMPPATH', get_bloginfo( 'stylesheet_directory' ) );
 define( 'PIMAGES', PARENTPATH . '/images' );
 define( 'IMAGES' , TEMPPATH . '/images' );
 
+require_once get_template_directory() . '/lib/module.class.php';
+
 //register navigation
 
 if( function_exists( 'register_nav_menus' ) ) :
@@ -43,4 +45,19 @@ if( function_exists( 'register_sidebar' ) ) :
 	   )
    );
 
+endif;
+
+if( !function_exists( 'slugify' ) ) :
+    function slugify($str, $replace=array(), $delimiter='-') {
+    	if( !empty($replace) ) {
+    		$str = str_replace((array)$replace, ' ', $str);
+    	}
+
+    	$clean = iconv('UTF-8', 'ASCII//TRANSLIT', $str);
+    	$clean = preg_replace("/[^a-zA-Z0-9\/_|+ -]/", '', $clean);
+    	$clean = strtolower(trim($clean, '-'));
+    	$clean = preg_replace("/[\/_|+ -]+/", $delimiter, $clean);
+
+    	return $clean;
+    }
 endif;
