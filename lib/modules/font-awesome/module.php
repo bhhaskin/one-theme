@@ -20,5 +20,10 @@ if( !is_admin() ) :
 
 
 	endif;
-
+else:
+	function ot_load_fontawesome_css() {
+		wp_register_style('fontawesome_css', get_template_directory_uri().'/lib/modules/font-awesome/css/font-awesome.min.css', array(), '4.0.3', 'all' );
+		wp_enqueue_style('fontawesome_css');
+	}
+	add_action( 'admin_enqueue_scripts', 'ot_load_fontawesome_css', 1 );
 endif;

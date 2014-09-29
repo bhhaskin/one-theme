@@ -12,6 +12,8 @@ class Bootstrap_Navigation {
   public $brand = false;
   public $search = false;
   public $inverse = false;
+  public $container = false;
+  public $sticky = false;
 
 
   function __construct($data = array()) {
@@ -30,11 +32,22 @@ class Bootstrap_Navigation {
       $iv = '';
     }
 
+    if($this->sticky == true) {
+      $stick = ' navbar-fixed-top';
+    }else{
+      $stick = '';
+    }
+
+
     $hurl = home_url('/');
     $blog_title = get_bloginfo('name');
 
     ?>
-      <div class="navbar navbar-default<?php echo $iv; ?>" role="navigation">
+      <div class="navbar navbar-default<?php echo $iv; ?><?php echo $stick; ?>" role="navigation">
+        <?php if($this->container == true){
+          echo '<div class="container">';
+        } ?>
+
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
             <span class="sr-only">Toggle navigation</span>
@@ -44,7 +57,8 @@ class Bootstrap_Navigation {
           </button>
           <?php
           if($this->brand == true){
-          echo '<a class="navbar-brand" href="'.$hurl.'">'.$blog_title.'</a>';
+          //echo '<a class="navbar-brand" href="'.$hurl.'">'.$blog_title.'</a>';
+          do_action('navbar_brand');
         } ?>
         </div>
 
@@ -60,18 +74,21 @@ class Bootstrap_Navigation {
                             )
                       ); ?>
 
-        <?php if($this->search == true){ ?>
-          <form class="navbar-form navbar-right" role="search" action="<?php bloginfo('url'); ?>" method="get">
+        <?php if($this->search == true){
+          do_action('navbar_right'); ?>
+          <!--<form class="navbar-form navbar-right" role="search" action="<?php bloginfo('url'); ?>" method="get">
             <div class="form-group">
               <input type="text" class="form-control" name="s" id="search" placeholder="Search">
             </div>
             <button type="submit" class="btn btn-default">Submit</button>
-          </form>
+          </form>-->
         <?php  } ?>
         </div>
+        <?php if($this->container == true){
+          echo '</div>';
+        } ?>
       </div>
     <?php
   }
-
 
 }

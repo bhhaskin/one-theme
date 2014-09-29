@@ -4,7 +4,7 @@
  * @package Wordpress
  * @subpackage one-theme
  * @since 1.0
- * @author Matthew Hansen
+ * @author Matthew Hansen & Bryan Haskin
  */
 
 get_header(); ?>
@@ -40,12 +40,7 @@ get_header(); ?>
 		<h2 class="center">Not Found</h2>
 		<p class="center">Sorry, but you are looking for something that isn't here.</p>
 
-    <?php get_search_form(); ?>
-
 	<?php
 	endif; ?>
-
-<?php
-get_sidebar(); ?>
 
 <?php get_footer(); ?>

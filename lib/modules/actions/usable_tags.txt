@@ -1,4 +1,0 @@
-usable template tags;
-
-ot_head -> directly after the body tag all templates
-of_foot -> directly before the closeing body tag
