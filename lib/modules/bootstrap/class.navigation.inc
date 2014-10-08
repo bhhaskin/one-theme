@@ -14,6 +14,7 @@ class Bootstrap_Navigation {
   public $inverse = false;
   public $container = false;
   public $sticky = false;
+  public $menuLocation = 'main';
 
 
   function __construct($data = array()) {
@@ -64,8 +65,8 @@ class Bootstrap_Navigation {
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <?php wp_nav_menu( array(
-                              'menu'       => 'main',
-                              'theme_location' => 'main',
+                              'menu'       => $this->menuLocation,
+                              'theme_location' => $this->menuLocation,
                               'depth'      => 2,
                               'container'  => false,
                               'menu_class' => 'nav navbar-nav',
