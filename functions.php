@@ -16,7 +16,7 @@ function otParentFunctions() {
 add_action( 'after_setup_theme', 'otParentFunctions', 9 );
 
 function otc_load_main_js() {
-        wp_register_script( 'child_js', get_template_directory_uri().'/main.js', array( 'jquery' ), '1.0.0', true );
+        wp_register_script( 'main_js', get_template_directory_uri().'/main.js', array( 'jquery' ), '1.0.0', true );
         wp_enqueue_script( 'main_js' );
 }
 
