@@ -1,0 +1,3 @@
+[submodule "lib/modules/core"]
+	path = lib/modules/core
+	url = https://github.com/OCG-labs/core-module.git
