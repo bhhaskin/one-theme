@@ -15,6 +15,7 @@ class Bootstrap_Navigation {
   public $container = false;
   public $sticky = false;
   public $menuLocation = 'main';
+  public $nav_right = false;
 
 
   function __construct($data = array()) {
@@ -39,15 +40,22 @@ class Bootstrap_Navigation {
       $stick = '';
     }
 
+    if($this->nav_right == true) {
+        $nr = ' navbar-right';
+    }else{
+        $nr = '';
+    }
+
 
     $hurl = home_url('/');
     $blog_title = get_bloginfo('name');
 
     ?>
-      <div class="navbar navbar-default<?php echo $iv; ?><?php echo $stick; ?>" role="navigation">
+      <div class="navbar navbar-default<?= $nr ?><?= $iv ?><?= $stick ?>" role="navigation">
         <?php if($this->container == true){
           echo '<div class="container">';
         } ?>
+
 
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
