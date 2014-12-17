@@ -9,13 +9,13 @@
 
 class Bootstrap_Navigation {
 
-  public $brand = false;
-  public $search = false;
+  public $nav_left = false;
+  public $nav_right = false;
   public $inverse = false;
   public $container = false;
-  public $sticky = false;
-  public $menuLocation = 'main';
-  public $nav_right = false;
+  public $sticky_top = false;
+  public $menu_location = 'main';
+  public $pos_right = false;
 
 
   function __construct($data = array()) {
@@ -34,13 +34,13 @@ class Bootstrap_Navigation {
       $iv = '';
     }
 
-    if($this->sticky == true) {
+    if($this->sticky_top == true) {
       $stick = ' navbar-fixed-top';
     }else{
       $stick = '';
     }
 
-    if($this->nav_right == true) {
+    if($this->pos_right == true) {
         $nr = ' navbar-right';
     }else{
         $nr = '';
@@ -65,7 +65,7 @@ class Bootstrap_Navigation {
             <span class="icon-bar"></span>
           </button>
           <?php
-          if($this->brand == true){
+          if($this->nav_left == true){
           //echo '<a class="navbar-brand" href="'.$hurl.'">'.$blog_title.'</a>';
           do_action('navbar_brand');
         } ?>
@@ -73,8 +73,8 @@ class Bootstrap_Navigation {
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           <?php wp_nav_menu( array(
-                              'menu'       => $this->menuLocation,
-                              'theme_location' => $this->menuLocation,
+                              'menu'       => $this->menu_location,
+                              'theme_location' => $this->menu_location,
                               'depth'      => 2,
                               'container'  => false,
                               'menu_class' => 'nav navbar-nav',
@@ -83,14 +83,8 @@ class Bootstrap_Navigation {
                             )
                       ); ?>
 
-        <?php if($this->search == true){
+        <?php if($this->nav_right == true){
           do_action('navbar_right'); ?>
-          <!--<form class="navbar-form navbar-right" role="search" action="<?php bloginfo('url'); ?>" method="get">
-            <div class="form-group">
-              <input type="text" class="form-control" name="s" id="search" placeholder="Search">
-            </div>
-            <button type="submit" class="btn btn-default">Submit</button>
-          </form>-->
         <?php  } ?>
         </div>
         <?php if($this->container == true){
