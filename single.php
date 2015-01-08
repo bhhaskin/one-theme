@@ -1,9 +1,11 @@
 <?php
 /**
- * @package WordPress
- * @subpackage Ocg Frame
+ * Common wordpress Template for single blog 
+ * @package Wordpress
+ * @subpackage one-theme
+ * @since 1.0
+ * @author Matthew Hansen & Bryan Haskin
  */
-
 get_header(); ?>
 
 	<?php 
