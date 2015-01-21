@@ -8,6 +8,7 @@
  * @author Matthew Hansen & Bryan Haskin
  */
 ?>
+</main>
 
 <?php wp_footer(); ?>
 
