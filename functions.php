@@ -9,7 +9,7 @@
  */
 
 function otParentFunctions() {
-	require_once dirname( __FILE__ ) . '/lib/modules/loader.php'; // Loader
+	require_once dirname( __FILE__ ) . '/lib/modules/core/module.php'; // Loader
 	$masterControl = oneTheme\MasterControl::getInstance();
 }
 
