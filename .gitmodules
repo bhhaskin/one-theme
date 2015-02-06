@@ -4,3 +4,12 @@
 [submodule "lib/modules/bootstrap"]
 	path = lib/modules/bootstrap
 	url = https://github.com/OCG-labs/bootstrap-module.git
+[submodule "lib/modules/shiv"]
+	path = lib/modules/shiv
+	url = https://github.com/OCG-labs/shiv-module.git
+[submodule "lib/modules/font-awsome"]
+	path = lib/modules/font-awsome
+	url = https://github.com/OCG-labs/font-awsome-module.git
+[submodule "lib/modules/gatekeeper"]
+	path = lib/modules/gatekeeper
+	url = https://github.com/OCG-labs/gatekeeper-module.git
