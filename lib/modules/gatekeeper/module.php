@@ -1,7 +1,7 @@
 <?php
 namespace oneTheme;
 
-require_once get_template_directory() . '/lib/module.class.php';
+require_once get_template_directory() . '/lib/modules/core/module.class.php';
 require_once 'GateKeeper.php';
 
 class GateKeeper extends Module{
