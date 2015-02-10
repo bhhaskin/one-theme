@@ -9,7 +9,8 @@
  */
 
 function otParentFunctions() {
-
+	require_once dirname( __FILE__ ) . '/lib/modules/core/module.php'; // Loader
+	$masterControl = oneTheme\MasterControl::getInstance();
 }
 
 add_action( 'after_setup_theme', 'otParentFunctions', 9 );
