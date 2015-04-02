@@ -29,9 +29,9 @@ class Bootstrap_Navigation {
 
     function menu_output() {
     ?>
-        <div class="navbar navbar-default<?= ($this->inverse ? ' navbar-inverse' : '');?> <?= ($this->sticky_top ? ' navbar-fixed-top' : '');?>" role="navigation">
+        <div class="navbar navbar-default<?= ($this->inverse == true ? ' navbar-inverse' : ''); ($this->sticky_top == true ? ' navbar-fixed-top' : '');?>" role="navigation">
             <?php if($this->container == true){
-                echo '<div class="container">';
+                echo '<div class="container-fluid">';
                 } ?>
 
 
@@ -59,16 +59,18 @@ class Bootstrap_Navigation {
                 ?>
 
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
-                    <?php wp_nav_menu( array(
-                    'menu'       => $this->menu_location,
-                    'theme_location' => $this->menu_location,
-                    'depth'      => 2,
-                    'container'  => false,
-                    'menu_class' => $menu_pos,
-                    'fallback_cb' => 'wp_page_menu',
-                    'walker' => new wp_bootstrap_navwalker()
-                    )
-                    ); ?>
+                       <?php if ( has_nav_menu( $this->menu_location ) ) {
+                        wp_nav_menu( array(
+                            'menu'       => $this->menu_location,
+                            'theme_location' => $this->menu_location,
+                            'depth'      => 2,
+                            'container'  => false,
+                            'menu_class' => $menu_pos,
+                            'fallback_cb' => 'wp_page_menu',
+                            'walker' => new wp_bootstrap_navwalker()
+                            )
+                        );
+                    } ?>
 
                     <?php if($this->nav_right == true){
                         do_action('navbar_right'); ?>
