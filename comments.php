@@ -3,7 +3,7 @@
   * Child theme
   * @package Wordpress
   * @subpackage one-theme
-  * @since 1.0
+  * @since 1.4
   * @author Matthew Hansen
   */
 
@@ -45,7 +45,7 @@ else:
 	else: ?>
 
 		<!-- If comments are closed. -->
-		<p class="nocomments">Comments are closed.</p>
+		<p class="nocomments"></p>
 
 	<?php
 	endif;

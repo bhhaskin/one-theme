@@ -4,14 +4,12 @@
  * Theme Functions
  * @package Wordpress
  * @subpackage one-theme
- * @since 1.0
+ * @since 1.4
  * @author Matthew Hansen & Bryan Haskin
  */
 
 function otParentFunctions() {
 	require_once dirname( __FILE__ ) . '/lib/modules/core/module.php'; // Loader
-
-
 }
 
 add_action( 'after_setup_theme', 'otParentFunctions', 9 );

@@ -1,0 +1,4 @@
+core-module
+===========
+
+Core module
