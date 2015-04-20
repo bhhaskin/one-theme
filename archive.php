@@ -57,7 +57,7 @@ get_header();
 			</div>
 			<?php if (isset($feat) && !empty($feat)): ?>
 				<div class="col-md-4">
-					<img class="img-responsive center-block" src="<?= ($feat ? $feat : $no_image) ?>" />
+					<img class="img-responsive center-block" src="<?= ($feat ? $feat : $no_image) ?>" alt="<?= get_alt(get_post_thumbnail_id()) ?>" />
 				</div>
 				<div class="col-md-8">
 					<?php the_excerpt( 'Read the rest of this entry &raquo;' ); ?>

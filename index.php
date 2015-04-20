@@ -24,7 +24,7 @@ get_header();
 						</div>
 						<?php if (isset($feat) && !empty($feat)): ?>
 							<div class="col-md-4">
-								<a href="<?= the_permalink() ?>"><img class="img-responsive center-block thumbnail" src="<?= $feat ?>" /></a>
+								<a href="<?= the_permalink() ?>"><img class="img-responsive center-block thumbnail" src="<?= $feat ?>" alt="<?= get_alt(get_post_thumbnail_id()) ?>" /></a>
 							</div>
 							<div class="col-md-8">
 								<?php the_excerpt( 'Read the rest of this entry &raquo;' ); ?>

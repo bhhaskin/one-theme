@@ -48,8 +48,11 @@ if( function_exists( 'register_sidebar' ) ) :
 endif;
 
 if( !function_exists( 'slugify' ) ) :
-    function slugify($str, $replace=array(), $delimiter='-') {
-    	if( !empty($replace) ) {
+    function slugify($str, $replace=array(), $delimiter='-', $stripHtml = True) {
+        if ($stripHtml) {
+            wp_strip_all_tags($str);
+        }
+        if( !empty($replace) ) {
     		$str = str_replace((array)$replace, ' ', $str);
     	}
 
@@ -60,6 +63,16 @@ if( !function_exists( 'slugify' ) ) :
 
     	return $clean;
     }
+endif;
+
+if( !function_exists( 'get_alt' ) ) :
+    function get_alt($id, $default = "Image") {
+    $alt = get_post_meta($id, '_wp_attachment_image_alt', true);
+    if (!empty($alt)) {
+        return $alt;
+    }
+    return $default;
+}
 endif;
 
 if( !function_exists( 'convert_number_to_words' ) ) :

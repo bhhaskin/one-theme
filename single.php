@@ -26,7 +26,7 @@ get_header(); ?>
                         </div>
 						<?php if (isset($feat) && !empty($feat)): ?>
                         <div class="col-md-3 col-md-offset-1">
-								<img class="img-responsive center-block thumbnail" src="<?= $feat ?>" />
+								<img class="img-responsive center-block thumbnail" src="<?= $feat ?>" alt="<?= get_alt(get_post_thumbnail_id()) ?>" />
                             <small><p class="postmetadata" style="margin-top: 15px;">Posted in <?php the_category( ', ' ) ?><br><?php the_tags( 'Tags: ', ', ', '<br />' ); ?> </p></small>
 
                             <!-- <div class="well hidden-sm hidden-xs" style="margin-top:20px;">
