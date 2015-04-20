@@ -65,6 +65,51 @@ if( !function_exists( 'slugify' ) ) :
     }
 endif;
 
+
+
+
+
+
+
+include_once(ABSPATH . 'wp-admin/includes/plugin.php');
+if (is_plugin_active( 'simple-fields/simple_fields.php')) {
+    if (!function_exists('get_sfs')) {
+        function get_sfs($connectorslug) {
+            if (!simple_fields_is_connector($connectorslug)) {
+                return false;
+            }
+            global $sf;
+            $connectors = $sf->get_post_connectors();
+            $connector = null;
+
+                foreach ($connectors as $one_connector) {
+                    if ( $one_connector["slug"] === $connectorslug && $one_connector["deleted"] == False)
+                    { $connector = $one_connector;}
+                }
+            if (empty($connector)) {
+                return [];
+            }
+            $slugArray = array();
+            foreach ($connector['field_groups'] as $item) {
+                $slug = $sf->get_field_group($item['id'])['slug'];
+                array_push($slugArray, $slug);
+            }
+            return $slugArray;
+        }
+    }
+    if (!function_exists('sfs_parts')) {
+        function sfs_parts($connector) {
+            if ($connector) {
+        	$fieldGroups = get_sfs($connector);
+            	foreach ($fieldGroups as $fieldGroup) {
+            		get_template_part( 'partials/sfg',  $fieldGroup);
+            	}
+            }
+        }
+    }
+}
+
+
 if( !function_exists( 'get_alt' ) ) :
     function get_alt($id, $default = "Image") {
     $alt = get_post_meta($id, '_wp_attachment_image_alt', true);
