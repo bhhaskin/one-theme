@@ -15,6 +15,10 @@ class Options extends Module{
       require( trailingslashit( get_template_directory() ) . 'option-tree/ot-loader.php' );
       require_once(get_template_directory() . "/option-tree/includes/ot-functions.php"); //sadly needed due to the loading order....
       add_action('admin_head', array($this, 'admin_css'));
+      
+      if (!WP_DEBUG) {
+        add_filter( 'ot_show_pages', '__return_false' );
+      }
   }
 
   public  function admin_css(){

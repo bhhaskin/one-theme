@@ -9,8 +9,6 @@
 
 class Bootstrap_Navigation {
 
-    public $nav_left = false;
-    public $nav_right = false;
     public $inverse = false;
     public $container = false;
     public $sticky_top = false;
@@ -43,11 +41,7 @@ class Bootstrap_Navigation {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <?php
-                    if($this->nav_left == true){
-                        //echo '<a class="navbar-brand" href="'.$this->hurl.'">'.$this->blog_title.'</a>';
-                        do_action('navbar_brand');
-                    } ?>
+                    <?php do_action('navbar_brand'); ?>
                 </div>
 
                 <?php
@@ -73,9 +67,9 @@ class Bootstrap_Navigation {
                         );
                     } ?>
 
-                    <?php if($this->nav_right == true){
-                        do_action('navbar_right'); ?>
-                        <?php  } ?>
+
+                        <?php do_action('navbar_right'); ?>
+
                     </div>
                     <?php if($this->container == true){
                         echo '</div>';
