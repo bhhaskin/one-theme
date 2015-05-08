@@ -19,4 +19,4 @@ function otc_load_main_js() {
         wp_enqueue_script( 'main_js' );
 }
 
-add_action( 'init', 'otc_load_main_js', 12 );
+add_action( 'wp_enqueue_scripts', 'otc_load_main_js', 12 );
