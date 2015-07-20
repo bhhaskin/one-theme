@@ -41,7 +41,7 @@ class Bootstrap_Navigation {
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <?php echo do_action('navbar_brand'); ?>
+                    <?php echo apply_filters('navbar_brand', ''); ?>
                 </div>
 
                 <?php
