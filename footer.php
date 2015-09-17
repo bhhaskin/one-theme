@@ -10,8 +10,13 @@
 ?>
 </main>
 
-<footer class="container-fluid">
-    
+<footer>
+    <div class="container">
+        <hr>
+        <p class="text-center">
+            <small class="text-muted">&copy; 2015 <a href="http://ocgcreative.com/">OCG Creative</a></small>
+        </p>
+    </div>
 </footer>
 
 <?php wp_footer(); ?>

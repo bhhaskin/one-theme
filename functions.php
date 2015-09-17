@@ -8,8 +8,11 @@
  * @author Matthew Hansen & Bryan Haskin
  */
 
+
+
 function otParentFunctions() {
 	require_once dirname( __FILE__ ) . '/lib/modules/core/module.php'; // Loader
+	add_filter('navbar_brand', 'otParent_Brand', 1);
 }
 
 add_action( 'after_setup_theme', 'otParentFunctions', 9 );
@@ -20,3 +23,11 @@ function otc_load_main_js() {
 }
 
 add_action( 'wp_enqueue_scripts', 'otc_load_main_js', 12 );
+
+function otParent_Brand() {
+	$hurl = home_url('/');
+    $blog_title = get_bloginfo('name');
+    return '<a id="brand" class="navbar-brand" href="'.$hurl.'">'. $blog_title .'</a>';
+}
+
+function new_excerpt_more( $more ) { return '...'; } add_filter('excerpt_more', 'new_excerpt_more');

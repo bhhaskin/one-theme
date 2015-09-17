@@ -8,99 +8,61 @@
  */
 get_header(); ?>
 
+<section id="single">
+	<div class="container">
+		<?php
+		if (have_posts()) : while (have_posts()) : the_post(); ?>
+			<?php
+				$feat = wp_get_attachment_url(get_post_thumbnail_id());
+			?>
 
-<section class="container-fluid">
-	<div class="row">
-	  <div class="container">
-	  	<div class="row">
-	  	  <div class="col-md-12">
-                <?php
-            	if (have_posts()) : while (have_posts()) : the_post(); ?>
-                    <?php
-                        $feat = wp_get_attachment_url(get_post_thumbnail_id());
-                    ?>
-                    <div class="row row-pad-sm">
-                        <div class="col-md-11 col-md-offset-1" style="margin-bottom: 15px;">
-                            <h2><strong><?php the_title(); ?></strong></h2>
-                            <small><?php the_time( 'F jS, Y' ) ?> by <?php the_author() ?> </small>
-                        </div>
-						<?php if (isset($feat) && !empty($feat)): ?>
-                        <div class="col-md-3 col-md-offset-1">
+			<article <?php post_class('row') ?> id="post-<?php the_ID(); ?>">
+				<div class="col-md-10 col-md-offset-1">
+					<header>
+						<h1><strong><?php the_title(); ?></strong></h1>
+						<small><?php the_time( 'F jS, Y' ) ?> by <?php the_author_posts_link() ?> </small>
+					</header>
+					<?php if (isset($feat) && !empty($feat)): ?>
+						<div class="row">
+							<div class="col-md-4">
 								<img class="img-responsive center-block thumbnail" src="<?= $feat ?>" alt="<?= get_alt(get_post_thumbnail_id()) ?>" />
-                            <small><p class="postmetadata" style="margin-top: 15px;">Posted in <?php the_category( ', ' ) ?><br><?php the_tags( 'Tags: ', ', ', '<br />' ); ?> </p></small>
-
-                            <!-- <div class="well hidden-sm hidden-xs" style="margin-top:20px;">
-                                <p class="postmetadata alt">
-                                    <small>
-                                        This entry was posted
-                                        <?php /* This is commented, because it requires a little adjusting sometimes.
-                                            You'll need to download this plugin, and follow the instructions:
-                                            http://binarybonsai.com/wordpress/time-since/ */
-                                            /* $entry_datetime = abs(strtotime($post->post_date) - (60*120)); echo time_since($entry_datetime); echo ' ago'; */ ?>
-                                        on <?php the_time('l, F jS, Y') ?> at <?php the_time() ?>
-                                        and is filed under <?php the_category(', ') ?>.
-                                        You can follow any responses to this entry through the <?php post_comments_feed_link('RSS 2.0'); ?> feed.
-
-                                        <?php if ( comments_open() && pings_open() ) {
-                                            // Both Comments and Pings are open ?>
-                                            You can <a href="#respond">leave a response</a>, or <a href="<?php trackback_url(); ?>" rel="trackback">trackback</a> from your own site.
-
-                                        <?php } elseif ( !comments_open() && pings_open() ) {
-                                            // Only Pings are Open ?>
-                                            Responses are currently closed, but you can <a href="<?php trackback_url(); ?> " rel="trackback">trackback</a> from your own site.
-
-                                        <?php } elseif ( comments_open() && !pings_open() ) {
-                                            // Comments are open, Pings are not ?>
-                                            You can skip to the end and leave a response. Pinging is currently not allowed.
-
-                                        <?php } elseif ( !comments_open() && !pings_open() ) {
-                                            // Neither Comments, nor Pings are open ?>
-                                            Both comments and pings are currently closed.
-
-                                        <?php } edit_post_link('Edit this entry','','.'); ?>
-
-                                    </small>
-                                </p>
-                            </div> -->
-                        </div>
-
-                        <div <?php post_class('col-md-7') ?> id="post-<?php the_ID(); ?>">
-
-                            <?php the_content('<p class="serif">Read the rest of this entry &raquo;</p>'); ?>
-
-
-                		</div> <!-- post -->
-						<?php else: ?>
-							<div <?php post_class('col-md-11 col-md-offset-1') ?> id="post-<?php the_ID(); ?>">
-
-								<?php the_content('<p class="serif">Read the rest of this entry &raquo;</p>'); ?>
-
-
-							</div> <!-- post -->
-							<div class="col-md-11 col-md-offset-1">
-								<small><p class="postmetadata" style="margin-top: 15px;">Posted in <?php the_category( ', ' ) ?><br><?php the_tags( 'Tags: ', ', ', '<br />' ); ?> </p></small>
+								<div class="postmetadata">
+									<?php the_tags( '<ul class="list-inline"><li>Tags:</li><li class="label label-primary">', '</li><li class="label label-primary">', '</li></ul>' ); ?>
+									<small> Posted in <?php the_category( ', ' ) ?>  <?php edit_post_link( 'Edit', '| ' ); ?></small></p>
+								</div>
 							</div>
-						<?php endif; ?>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-10 col-md-offset-1">
-            		         <?php comments_template(); ?>
-                        </div>
-                    </div>
-            	<?php
-            	endwhile; else: ?>
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-2">
-            		          <p>Sorry, no posts matched your criteria.</p>
-                    </div>
-                </div>
-            	<?php
-            	endif; ?>
-	  	  </div>
-	  	</div>
-	  </div>
+							<div class="col-md-8">
+								<?php the_content('<p class="serif">Read the rest of this entry &raquo;</p>'); ?>
+							</div>
+						</div>
+					<?php else: ?>
+						<?php the_content('<p class="serif">Read the rest of this entry &raquo;</p>'); ?>
+						<div class="postmetadata">
+							<?php the_tags( '<ul class="list-inline"><li>Tags:</li><li class="label label-primary">', '</li><li class="label label-primary">', '</li></ul>' ); ?>
+							<small> Posted in <?php the_category( ', ' ) ?>  <?php edit_post_link( 'Edit', '| ' ); ?></small></p>
+						</div>
+					<?php endif; ?>
+					<footer>
+						<div class="row">
+							<div class="col-md-10 col-md-offset-1">
+								<?php comments_template(); ?>
+							</div>
+						</div>
+					</footer>
+				</div>
+			</article>
+		<?php
+		endwhile; else: ?>
+		<div class="row">
+			<div class="col-md-8 col-md-offset-2">
+					<p>Sorry, no posts matched your criteria.</p>
+			</div>
+		</div>
+		<?php
+		endif; ?>
 	</div>
 </section>
+
 
 <?php
 get_footer(); ?>

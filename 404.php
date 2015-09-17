@@ -9,15 +9,10 @@
 
 get_header();
 ?>
-
-<section id="404" class="container-fluid">
-	<div class="row">
-		<div class="container">
-			<div class="row" style="margin-top: 35px; margin-bottom:250px;">
-				<div class="col-md-8 col-md-offset-2 text-center">
-					<h2 class="center">Error 404 - Not Found</h2>
-				</div>
-			</div>
+<section id="404">
+	<div class="container">
+		<div class="page-header">
+		  <h1 class="text-center">Error 404 - Not Found</h1>
 		</div>
 	</div>
 </section>

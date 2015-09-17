@@ -7,6 +7,32 @@
 	Author URI: http://ocgcreative.com
 */
 
+.navbar {
+    border-radius: 0;
+}
+
+.post {
+    margin-bottom:25px;
+}
+
+.post header {
+    margin-bottom:25px;
+}
+
+.post footer {
+    margin-top:25px;
+}
+
+.postmetadata .label {
+    margin-left:2px;
+    margin-right:2px;
+}
+
+.postmetadata .label a {
+    color: #fff;
+}
+
+
 /*
 =================================================
 W O R D P R E S S  C O R E  C S S

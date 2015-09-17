@@ -13,6 +13,7 @@ class Bootstrap_Navigation {
     public $container = false;
     public $sticky_top = false;
     public $menu_location = 'main';
+    public $menu = null;
     public $pos_right = false;
 
     function __construct($data = array()) {
@@ -54,9 +55,9 @@ class Bootstrap_Navigation {
                 ?>
 
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
-                       <?php if ( has_nav_menu( $this->menu_location ) ) {
+                       <?php if ( has_nav_menu( $this->menu_location ) or (!empty($this->menu) and isset($this->menu)) ) {
                         wp_nav_menu( array(
-                            'menu'       => $this->menu_location,
+                            'menu'       => ((!empty($this->menu) and isset($this->menu)) ? $this->menu : $this->menu_location),
                             'theme_location' => $this->menu_location,
                             'depth'      => 2,
                             'container'  => false,
