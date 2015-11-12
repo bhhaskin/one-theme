@@ -10,8 +10,7 @@
 get_header();
 ?>
 
-<section>
-	<div class="container">
+<section class="container">
 		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 			<article <?php post_class('row') ?> id="post-<?php the_ID(); ?>">
 				<?php $feat = wp_get_attachment_url(get_post_thumbnail_id()); ?>
@@ -55,7 +54,6 @@ get_header();
 			<p class="center">Sorry, but you are looking for something that isn't here.</p>
 			<?php get_search_form(); ?>
 		<?php endif; ?>
-	</div>
 </section>
 
 <?php get_footer(); ?>
