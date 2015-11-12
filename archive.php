@@ -42,14 +42,10 @@ get_header();
 	</div>
 </section>
 
-<section id="archive">
-	<div class="container">
-
-	</div>
+<section id="archive" class="container">
 </section>
 
 <section id="archive" class="container-fluid">
-	<div class="row">
 		<div class="container">
 
 
@@ -113,7 +109,6 @@ get_header();
 
 	endif; ?>
 
-	</div>
 	</div>
 </section>
 

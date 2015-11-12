@@ -9,11 +9,9 @@
 
 get_header();
 ?>
-<section id="404">
-	<div class="container">
-		<div class="page-header">
-		  <h1 class="text-center">Error 404 - Not Found</h1>
-		</div>
+<section id="404" class="container">
+	<div class="page-header">
+	  <h1 class="text-center">Error 404 - Not Found</h1>
 	</div>
 </section>
 
